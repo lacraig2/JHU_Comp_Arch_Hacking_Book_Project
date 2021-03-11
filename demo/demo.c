@@ -5,9 +5,7 @@
 #include <ucontext.h>
 #include <signal.h>
 #include <unistd.h>
-
-int (*printf_internal)( const char * format, ... ) = printf;
-
+#include <stdbool.h>
 
 void fault_handler(int signo, siginfo_t *info, void *extra){
 	printf("------------------------ERROR-------------------------\n");
@@ -38,53 +36,12 @@ void set_up_handlers(){
 		exit(1);
 	}
 }
-//__attribute__((section(".win_sec"))) __asm__(
-//
-//	.L0 .ascii "  _____\n"
-//    .L1 .ascii " /     \\\n"
-//	printf("| () () |\n");
-//	printf(" \\  ^  /\n");
-//	printf("  |||||\n");
-//	printf("  |||||\n");	
-//	printf("\n");
-//	printf("Oh no! There's haxx0rs in the mainframe!\n");
-//}
-//__attribute__((section(".win_msg"))) char *win_message = "  _____\n"  \
-//	" /     \\\n" \
-//	"| () () |\n" \
-//	" \\  ^  /\n" \
-//	"  |||||\n" \
-//	"  |||||\n"	\
-//	"\n" \
-//	"Oh no! There's haxx0rs in the mainframe!\n";
 
-//__attribute__((section(".win_sec"))) __attribute__((naked)) void bet_you_cant_get_here(){
-//    __asm__(
-//    "mov r0, %1 \n"
-//    : "=r" (win_message));
-//    __asm__(
-//    "bl puts\n"
-////    "mov r7, 1\n"
-//    "mov r0, 0\n"
-//    "b exit\n"
-//);
-//}
-
-//__attribute__((section(".win_sec"))) __attribute__((naked)) void bet_you_cant_get_here() {
-//	printf_internal("  _____\n");  
-//	printf(" /     \\\n");
-//	printf("| () () |\n");
-//	printf(" \\  ^  /\n");
-//	printf("  |||||\n");
-//	printf("  |||||\n");	
-//	printf("\n");
-//	printf("Oh no! There's haxx0rs in the mainframe!\n");
-//}
 
 int main(int argc, char* argv[]){
+	set_up_handlers();
     printf("Hello to the string consumer 3000!\n");
     char buf[10];
-	set_up_handlers();
     if (argc > 1){
         printf("You provided me a string! Yum!\n");
         strcpy(buf,argv[1]);
