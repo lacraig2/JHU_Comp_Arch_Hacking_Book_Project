@@ -193,9 +193,10 @@ SECTIONS
   _bss_end__ = . ; __bss_end__ = . ;
   . = ALIGN(32 / 8);
   . = SEGMENT_START("ldata-segment", .);
-  . = ALIGN(32 / 8);
-  . = 0x46454542;
+  . = ALIGN(1);
+  . = 0x4b434148;
   .win_sec          : { *(.win_sec) }
+  . = ALIGN(32 / 8);
   __end__ = . ;
   _end = .; PROVIDE (end = .);
   . = DATA_SEGMENT_END (.);
