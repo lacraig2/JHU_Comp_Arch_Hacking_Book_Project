@@ -1,8 +1,0 @@
-__attribute__((section(".win_msg"))) char *win_message = "  _____\n"  \
-	" /     \\\n" \
-	"| () () |\n" \
-	" \\  ^  /\n" \
-	"  |||||\n" \
-	"  |||||\n"	\
-	"\n" \
-	"Oh no! There's haxx0rs in the mainframe!\n";
