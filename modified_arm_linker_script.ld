@@ -1,3 +1,12 @@
+/*
+* Dear student,
+* You do not need to understand this file to do your assignment.
+* If you'd like to understand I can tell you that all it does is 
+* place the code in bet_you_cant.S at a specific virtual address.
+* 
+*/
+
+
 /* Script for -z combreloc: combine and sort reloc sections */
 /* Copyright (C) 2014-2018 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
