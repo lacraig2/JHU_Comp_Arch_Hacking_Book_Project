@@ -1,1 +1,2 @@
-qemu-arm -L /usr/arm-linux-gnueabihf/ ./demo $1 #ABCDABCDABCDABCEHACK
+echo "If your system is not ARM this won't work. Try ./run_qemu.sh"
+./demo $1

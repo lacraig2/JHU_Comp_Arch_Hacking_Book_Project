@@ -1,3 +1,8 @@
+/**
+* You should not have to look at this to understand how it works.
+*
+*/
+
 /* Script for -z combreloc: combine and sort reloc sections */
 /* Copyright (C) 2014-2018 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,

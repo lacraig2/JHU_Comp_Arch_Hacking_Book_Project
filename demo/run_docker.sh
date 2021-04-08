@@ -1,0 +1,1 @@
+docker -v .:. run -it demo  ./build.sh
