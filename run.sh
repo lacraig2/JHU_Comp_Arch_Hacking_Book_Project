@@ -11,10 +11,8 @@
 arch=$(arch)
 
 if [[ "$#"  -lt  1 ]]; then
-    echo "setting arch"
     arg1=$(arch)
 else
-    echo "setting arg"
     arg1=$1
 fi
 
@@ -25,7 +23,7 @@ elif [[ $arg1 == "arm" ]]; then
     echo "You selected an arm demo"
     if [[ $arch == "arm" ]]; then
         echo "[INFO] Running on native arm machine"
-        ./demo ABCDABCDABCDABCEHACK
+        ./demo $2 
     else
         echo "[INFO] Running in qemu-arm"
         qemu-arm -L /usr/arm-linux-gnueabihf/ ./demo_arm $2

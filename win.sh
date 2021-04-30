@@ -22,7 +22,7 @@ elif [[ $arg1 == "arm" ]]; then
     echo "You selected an arm demo"
     if [[ $arch == "arm" ]]; then
         echo "[INFO] Running on native arm machine"
-        ./demo ABCDABCDABCDABCEHACK
+        ./demo ABCDABCDABCDABCEEEEEHACK
     else
         echo "[INFO] Running in qemu-arm"
         qemu-arm -L /usr/arm-linux-gnueabihf/ ./demo_arm ABCDABCDABCDABCEEEEEHACK
