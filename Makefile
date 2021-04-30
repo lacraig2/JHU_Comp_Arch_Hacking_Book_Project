@@ -1,5 +1,5 @@
 # add a few convenience phony targets
-.DEFAULT_GOAL := demo_x86_64
+.DEFAULT_GOAL := amd64
 all : demo_i386 demo_amd64 demo_arm
 x86_64 : demo_amd64
 amd64: demo_amd64
