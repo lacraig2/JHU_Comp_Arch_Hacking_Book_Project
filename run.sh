@@ -1,2 +1,36 @@
-echo "If your system is not ARM this won't work. Try ./run_qemu.sh"
-./demo $1
+# This example supports x86, x86_64, and ARM.
+# 
+# It checks if you are on the right architecture
+# when running the ARM example and uses QEMU
+# if your machine isn't ARM.
+
+# The first argument is the architecture.
+# The second argument is the string to be supplied.
+
+
+arch=$(arch)
+
+if [[ "$#"  -lt  1 ]]; then
+    echo "setting arch"
+    arg1=$(arch)
+else
+    echo "setting arg"
+    arg1=$1
+fi
+
+if [[ $arg1 == "amd64" || $arg1 == "x86_64" ]]; then
+    echo "[INFO] You selected an amd64 demo"
+    ./demo_amd64 $2
+elif [[ $arg1 == "arm" ]]; then
+    echo "You selected an arm demo"
+    if [[ $arch == "arm" ]]; then
+        echo "[INFO] Running on native arm machine"
+        ./demo ABCDABCDABCDABCEHACK
+    else
+        echo "[INFO] Running in qemu-arm"
+        qemu-arm -L /usr/arm-linux-gnueabihf/ ./demo_arm $2
+    fi
+else
+    echo "Defaulted to i386"
+    ./demo_i386 $2
+fi
