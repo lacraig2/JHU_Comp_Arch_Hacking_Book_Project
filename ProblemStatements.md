@@ -12,7 +12,7 @@ In Problem One we saw how we can use a buffer overflow vulnerability to write pa
 
 ## Part A
 
-In this program we have a vulnerability. The strcpy function will copy as many bytes as we enter on the command line and write it into a limited buffer of length 10 on the stack. If you write a string longer than 10 it will begin to write past its buffer length and will eventually modify the return address. Find the minimum length string required to crash the program. Record your string and the output of the program.
+In this program we have a vulnerability. The `strcpy` function will copy as many bytes as we enter on the command line and write it into a limited buffer of length 10 on the stack. If you write a string longer than 10 it will begin to write past its buffer length and will eventually modify the return address. Find the minimum length string required to crash the program. Record your string and the output of the program.
   
 ## Part B
 

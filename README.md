@@ -2,7 +2,7 @@
 
 ## Why?
 
-This project attempts to create a starter buffer overflow that is slightly easier to use.
+This project attempts to create a starter buffer overflow that is slightly easier to use for use by undergraduates seeing their very first buffer overflow example.
 
 It does so in the following ways:
 
@@ -13,9 +13,21 @@ It does so in the following ways:
 
 Signal handlers and modified linker scripts. I wrote up a blog post about some more details [here](nolinkhere.yet).
 
-## Getting started
+## Quick start
 
-We make builds for x86, x86_64, and arm. If you are on a non-ARM machine and would like to run the ARM binary you will need `qemu-user`.
+Replace arch with your architecture. Either i386, x86_64, or arm.
+
+```bash
+make arch
+```
+
+Go read the [problem statements](ProblemStatements.md). They're not too long and they hopefully help you solve the problem.
+
+When you finish go see the solution [win.sh](win.sh).
+
+```bash
+./win.sh arch
+```
 
 ### Building
 
