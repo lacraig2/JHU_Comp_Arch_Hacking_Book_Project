@@ -18,11 +18,9 @@
 #include <unistd.h>
 #include <ucontext.h>
 
-extern void* win_sec;
-void** address_to_hit = &win_sec;
+void* address_to_hit = (void*)0x4b434148;
 
-
-void fault_handler(int signo, siginfo_t *info, void *extra){
+void fault_handler(int signo, siginfo_t *info, void *ucontext) {
 	puts("\n\n\n------------------------FAULT-------------------------\n");
     puts("Goodbye cruel world! I was a young program. And I have died too soon!\n");
     puts("You can avenge my death! I received a fault.");
@@ -81,12 +79,26 @@ void fault_handler(int signo, siginfo_t *info, void *extra){
 		printf("rdi           0x%llx\n", context->uc_mcontext.gregs[REG_RDI]); 
 		printf("rip           0x%llx\n", context->uc_mcontext.gregs[REG_RIP]); 
 		#elif defined(__arm__)
-		printf("rip           0x%llx\n", context->uc_mcontext.gregs[REG_PC]); 
+		printf("R0           0x%lx\n", context->uc_mcontext.arm_r0); 
+		printf("R1           0x%lx\n", context->uc_mcontext.arm_r1); 
+		printf("R2           0x%lx\n", context->uc_mcontext.arm_r2); 
+		printf("R3           0x%lx\n", context->uc_mcontext.arm_r3); 
+		printf("R4           0x%lx\n", context->uc_mcontext.arm_r4); 
+		printf("R5           0x%lx\n", context->uc_mcontext.arm_r5); 
+		printf("R6           0x%lx\n", context->uc_mcontext.arm_r6); 
+		printf("R7           0x%lx\n", context->uc_mcontext.arm_r7); 
+		printf("R8           0x%lx\n", context->uc_mcontext.arm_r8); 
+		printf("R9           0x%lx\n", context->uc_mcontext.arm_r9); 
+		printf("R10          0x%lx\n", context->uc_mcontext.arm_r10);
+		printf("FP           0x%lx\n", context->uc_mcontext.arm_fp); 
+		printf("SP           0x%lx\n", context->uc_mcontext.arm_sp); 
+		printf("LR           0x%lx\n", context->uc_mcontext.arm_lr); 
+		printf("PC           0x%lx\n", context->uc_mcontext.arm_pc); 
 		#endif
 	}else{
 		printf("context is null\n");
 	}
-	printf("\nKeep in mind we want our address to be 0x%x\n",*address_to_hit);
+	printf("\nKeep in mind we want our address to be %p\n",address_to_hit);
 	fflush(stdout);
     exit(0);
 }
@@ -134,7 +146,7 @@ void call_strcpy(char* A){
 int main(int argc, char* argv[]){
 	set_up_handlers();
     printf("Hello to the string consumer 3000!\n");
-	printf("It'd sure be neat if you could redirect flow to %p\n", *address_to_hit);
+	printf("It'd sure be neat if you could redirect flow to %p\n", address_to_hit);
     if (argc > 1){
         printf("You provided me a string! Great! I'll strcpy it!\n");
         call_strcpy(argv[1]);
