@@ -56,7 +56,7 @@ void fault_handler(int signo, siginfo_t *info, void *ucontext) {
 
 	puts("\nRegister state:");
 
-	ucontext_t *context = (ucontext_t*)extra;
+	ucontext_t *context = (ucontext_t*)ucontext;
 	if (context != NULL){
 		#if defined(i386)
 		printf("eax           0x%x\n", context->uc_mcontext.gregs[REG_EAX]); 

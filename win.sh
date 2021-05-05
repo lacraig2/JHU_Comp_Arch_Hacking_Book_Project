@@ -8,10 +8,8 @@
 arch=$(arch)
 
 if [[ "$#"  -lt  1 ]]; then
-    echo "setting arch"
     arg1=$(arch)
 else
-    echo "setting arg"
     arg1=$1
 fi
 
