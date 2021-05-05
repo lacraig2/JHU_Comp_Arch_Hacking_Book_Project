@@ -27,5 +27,5 @@ elif [[ $arg1 == "arm" ]]; then
     fi
 else
     echo "Defaulted to i386"
-    ./demo_i386 `python -c "print('a'*24+'HACK')"`
+    ./demo_i386 `python -c "print('a'*28+'HACK')"`
 fi
